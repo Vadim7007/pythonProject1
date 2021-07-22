@@ -1,6 +1,4 @@
-from docxtpl import DocxTemplate
 from docx import Document
-import docx
 import os
 import configparser
 import mysql.connector

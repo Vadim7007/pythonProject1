@@ -1,2 +1,2 @@
 mysql-connector-python~=8.0.24
-docxtpl~=0.11.5
+docx~=0.2.4
