@@ -2,6 +2,12 @@ from docx import Document
 import os
 import configparser
 import mysql.connector
+from flask import Flask
+from flask_restful import Api, reqparse
+
+# Создание Flask API приложения для принятие http запросов
+app = Flask(__name__)
+api = Api(app)
 
 # Настройка подключения к бд
 config = configparser.ConfigParser()
@@ -68,11 +74,8 @@ def create_file(path_from, path_to, context):
     doc.save(path_to)
 
 
-#  Основная функция по созданию готовой директории "конкурсное производство"
-def create_kp(user_id, deal_id):
-    path_from = "themes/asb/documents/konkursnoe_proizvodstvo"
-    path_to = "uploads/documents/" + str(user_id) + "/" + str(deal_id) + "/konkursnoe_proizvodstvo"
-
+# Функция по созданию директорий для любой шаблонной папки
+def create_type(user_id, deal_id, path_from, path_to):
     context = create_context(user_id, deal_id)
 
     create_skeleton(path_to, path_from)
@@ -86,8 +89,69 @@ def create_kp(user_id, deal_id):
                                 context)
 
 
-# проверка, что все работает
+#  Основная функция по созданию готовой директории "конкурсное производство"
+def create_kp(user_id, deal_id):
+    path_from = "themes/asb/documents/konkursnoe_proizvodstvo"
+    path_to = "uploads/documents/" + str(user_id) + "/" + str(deal_id) + "/konkursnoe_proizvodstvo"
+
+    create_type(user_id, deal_id, path_from, path_to)
+
+
+#  Основная функция по созданию готовой директории "конкурсное производство"
+def create_n(user_id, deal_id):
+    path_from = "themes/asb/documents/konkursnoe_proizvodstvo"
+    path_to = "uploads/documents/" + str(user_id) + "/" + str(deal_id) + "/konkursnoe_proizvodstvo"
+
+    create_type(user_id, deal_id, path_from, path_to)
+
+
+#  Основная функция по созданию готовой директории "конкурсное производство"
+def create_real(user_id, deal_id):
+    path_from = "themes/asb/documents/konkursnoe_proizvodstvo"
+    path_to = "uploads/documents/" + str(user_id) + "/" + str(deal_id) + "/konkursnoe_proizvodstvo"
+
+    create_type(user_id, deal_id, path_from, path_to)
+
+
+#  Основная функция по созданию готовой директории "конкурсное производство"
+def create_res(user_id, deal_id):
+    path_from = "themes/asb/documents/konkursnoe_proizvodstvo"
+    path_to = "uploads/documents/" + str(user_id) + "/" + str(deal_id) + "/konkursnoe_proizvodstvo"
+
+    create_type(user_id, deal_id, path_from, path_to)
+
+
+# Post запрос
+def post(self):
+    parser = reqparse.RequestParser()
+    parser.add_argument("user_id")
+    parser.add_argument("deal_id")
+    parser.add_argument("type")
+    params = parser.parse_args()
+    type = int(params["type"])
+    if type == 0:
+        try:
+            create_kp(params["user_id"], params["deal_id"])
+        except Exception:
+            return 400
+    if type == 1:
+        try:
+            create_n(params["user_id"], params["deal_id"])
+        except Exception:
+            return 401
+    if type == 2:
+        try:
+            create_real(params["user_id"], params["deal_id"])
+        except Exception:
+            return 402
+    if type == 3:
+        try:
+            create_res(params["user_id"], params["deal_id"])
+        except Exception:
+            return 403
+    return 201
+
+
+# Запуск API Flask
 if __name__ == "__main__":
-    user_id = 2
-    deal_id = 102
-    create_kp(user_id, deal_id)
+    app.run(debug=False)
