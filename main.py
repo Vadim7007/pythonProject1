@@ -91,32 +91,32 @@ def create_type(user_id, deal_id, path_from, path_to):
 
 #  Основная функция по созданию готовой директории "конкурсное производство"
 def create_kp(user_id, deal_id):
-    path_from = "themes/asb/documents/konkursnoe_proizvodstvo"
-    path_to = "uploads/documents/" + str(user_id) + "/" + str(deal_id) + "/konkursnoe_proizvodstvo"
+    path_from = "themes/asb/documents/Конкурсное производство"
+    path_to = "uploads/documents/" + str(user_id) + "/" + str(deal_id) + "/Конкурсное производство"
 
     create_type(user_id, deal_id, path_from, path_to)
 
 
-#  Основная функция по созданию готовой директории "конкурсное производство"
+#  Основная функция по созданию готовой директории "Наблюдение"
 def create_n(user_id, deal_id):
-    path_from = "themes/asb/documents/konkursnoe_proizvodstvo"
-    path_to = "uploads/documents/" + str(user_id) + "/" + str(deal_id) + "/konkursnoe_proizvodstvo"
+    path_from = "themes/asb/documents/Наблюдение"
+    path_to = "uploads/documents/" + str(user_id) + "/" + str(deal_id) + "/Наблюдение"
 
     create_type(user_id, deal_id, path_from, path_to)
 
 
-#  Основная функция по созданию готовой директории "конкурсное производство"
+#  Основная функция по созданию готовой директории "Реализация"
 def create_real(user_id, deal_id):
-    path_from = "themes/asb/documents/konkursnoe_proizvodstvo"
-    path_to = "uploads/documents/" + str(user_id) + "/" + str(deal_id) + "/konkursnoe_proizvodstvo"
+    path_from = "themes/asb/documents/Реализация"
+    path_to = "uploads/documents/" + str(user_id) + "/" + str(deal_id) + "/Реализация"
 
     create_type(user_id, deal_id, path_from, path_to)
 
 
-#  Основная функция по созданию готовой директории "конкурсное производство"
+#  Основная функция по созданию готовой директории "Реструктуризация"
 def create_res(user_id, deal_id):
-    path_from = "themes/asb/documents/konkursnoe_proizvodstvo"
-    path_to = "uploads/documents/" + str(user_id) + "/" + str(deal_id) + "/konkursnoe_proizvodstvo"
+    path_from = "themes/asb/documents/Реструктуризация"
+    path_to = "uploads/documents/" + str(user_id) + "/" + str(deal_id) + "/Реструктуризация"
 
     create_type(user_id, deal_id, path_from, path_to)
 
