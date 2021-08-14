@@ -99,24 +99,24 @@ def create_kp(user_id, deal_id):
 
 #  Основная функция по созданию готовой директории "Наблюдение"
 def create_n(user_id, deal_id):
-    path_from = "themes/asb/documents/Наблюдение"
-    path_to = "uploads/documents/" + str(user_id) + "/" + str(deal_id) + "/Наблюдение"
+    path_from = "jjenserl.beget.tech/public_html/wp-content/themes/asb/documents/Наблюдение"
+    path_to = "jjenserl.beget.tech/public_html/wp-content/uploads/documents/" + str(user_id) + "/" + str(deal_id) + "/Наблюдение"
 
     create_type(user_id, deal_id, path_from, path_to)
 
 
 #  Основная функция по созданию готовой директории "Реализация"
 def create_real(user_id, deal_id):
-    path_from = "themes/asb/documents/Реализация"
-    path_to = "uploads/documents/" + str(user_id) + "/" + str(deal_id) + "/Реализация"
+    path_from = "jjenserl.beget.tech/public_html/wp-content/themes/asb/documents/Реализация"
+    path_to = "jjenserl.beget.tech/public_html/wp-content/uploads/documents/" + str(user_id) + "/" + str(deal_id) + "/Реализация"
 
     create_type(user_id, deal_id, path_from, path_to)
 
 
 #  Основная функция по созданию готовой директории "Реструктуризация"
 def create_res(user_id, deal_id):
-    path_from = "themes/asb/documents/Реструктуризация"
-    path_to = "uploads/documents/" + str(user_id) + "/" + str(deal_id) + "/Реструктуризация"
+    path_from = "jjenserl.beget.tech/public_html/wp-content/themes/asb/documents/Реструктуризация"
+    path_to = "jjenserl.beget.tech/public_html/wp-content/uploads/documents/" + str(user_id) + "/" + str(deal_id) + "/Реструктуризация"
 
     create_type(user_id, deal_id, path_from, path_to)
 
