@@ -1,3 +1,5 @@
 # Project exclude paths
 /venv/
 settings.ini
+*.xml
+.idea

@@ -2,12 +2,10 @@ from docx import Document
 import os
 import configparser
 import mysql.connector
-from flask import Flask
-from flask_restful import Api, reqparse
+from flask import Flask, request, make_response
 
 # Создание Flask API приложения для принятие http запросов
 app = Flask(__name__)
-api = Api(app)
 
 # Настройка подключения к бд
 config = configparser.ConfigParser()
@@ -122,36 +120,35 @@ def create_res(user_id, deal_id):
 
 
 # Post запрос
-def post(self):
-    parser = reqparse.RequestParser()
-    parser.add_argument("user_id")
-    parser.add_argument("deal_id")
-    parser.add_argument("type")
-    params = parser.parse_args()
-    type = int(params["type"])
+@app.route("/", methods=['POST'])
+def post():
+    params = request.values.to_dict()
+    type = params.get("type")
+    if type is None: return make_response(('BAD REQUEST', 400))
+    type = int(type)
     if type == 0:
         try:
             create_kp(params["user_id"], params["deal_id"])
         except Exception:
-            return 400
+            return make_response(('BAD REQUEST', 400))
     if type == 1:
         try:
             create_n(params["user_id"], params["deal_id"])
         except Exception:
-            return 401
+            return make_response(('BAD REQUEST', 400))
     if type == 2:
         try:
             create_real(params["user_id"], params["deal_id"])
         except Exception:
-            return 402
+            return make_response(('BAD REQUEST', 400))
     if type == 3:
         try:
             create_res(params["user_id"], params["deal_id"])
         except Exception:
-            return 403
-    return 201
+            return make_response(('BAD REQUEST', 400))
+    return make_response(('OK', 200))
 
 
 # Запуск API Flask
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=False, port=80)
